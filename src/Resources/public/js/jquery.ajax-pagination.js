@@ -1,4 +1,4 @@
-(function (jQuery, undefined) {
+(function (jQuery) {
 
     const $requestCache = [];
     const $currentlyProcessedElements = [];
@@ -23,8 +23,10 @@
         $container.css({opacity: .25});
 
         // use cached results if possible
-        if ($requestCache[requestUrl]) {
-            update($container, $requestCache[requestUrl], requestUrl);
+        var cacheKey = requestUrl || $container.data('pagination');
+
+        if ($requestCache[cacheKey]) {
+            update($container, $requestCache[cacheKey], requestUrl);
             $currentlyProcessedElements.splice($currentlyProcessedElements.indexOf($element), 1);
 
             return;
@@ -36,7 +38,7 @@
             type: 'get',
             success: function (data) {
                 var $content = jQuery(data).find('[data-pagination="' + $container.data('pagination') + '"]').children();
-                $requestCache[requestUrl] = $content;
+                $requestCache[cacheKey] = $content;
 
                 update($container, $content, requestUrl);
                 $currentlyProcessedElements.splice($currentlyProcessedElements.indexOf($element), 1);
