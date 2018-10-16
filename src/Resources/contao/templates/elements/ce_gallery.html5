@@ -1,0 +1,10 @@
+<?php $this->extend($this->isRandomOrder ? 'block_unsearchable' : 'block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <div data-pagination="page_g<?= $this->id ?>">
+    <?= $this->images ?>
+    <?= $this->pagination ?>
+  </div>
+
+<?php $this->endblock(); ?>

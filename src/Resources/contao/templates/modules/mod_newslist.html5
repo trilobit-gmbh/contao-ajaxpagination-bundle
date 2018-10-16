@@ -1,0 +1,14 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?php if (empty($this->articles)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+    <div data-pagination="page_n<?= $this->id ?>">
+      <?= implode('', $this->articles) ?>
+      <?= $this->pagination ?>
+    </div>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

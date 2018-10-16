@@ -1,0 +1,11 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <div data-pagination="page_c<?= $this->id ?>">
+    <?= implode('', $this->comments) ?>
+    <?= $this->pagination ?>
+  </div>
+  <?php $this->insert('mod_comment_form', $this->arrData); ?>
+
+<?php $this->endblock(); ?>

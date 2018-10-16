@@ -1,0 +1,10 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <div data-pagination="page_n<?= $this->id ?>">
+    <?= $this->events ?>
+    <?= $this->pagination ?>
+  </div>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,3 @@
+<?php
+
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/trilobitajaxpagination/js/jquery.ajax-pagination.js';
