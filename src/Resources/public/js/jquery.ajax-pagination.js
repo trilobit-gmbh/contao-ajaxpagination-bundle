@@ -67,7 +67,7 @@
 
     function init() {
         // track .pagination a elements
-        jQuery('body').on('click', '.pagination a', function (event) {
+        jQuery('body').on('click', '[data-pagination] .pagination a, [data-pagination] .cal_pagination a', function (event) {
             event.preventDefault();
             requestUpdate(jQuery(this));
         });
