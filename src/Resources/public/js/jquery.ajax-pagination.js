@@ -5,12 +5,13 @@
 
     function requestUpdate($element) {
         // only allow one update at a time
-        if($currentlyProcessedElements.includes($element)) {
+        if ($currentlyProcessedElements.includes($element)) {
             return;
         }
         $currentlyProcessedElements.push($element);
 
         var $container = $element.closest('[data-pagination]');
+        var opacity = $element.closest('[data-pagination]').data('pagination-opacity')?? '.25';
         var requestUrl = $element.attr('href');
 
         // trigger event: on hide
@@ -20,7 +21,7 @@
             })
         );
 
-        $container.css({opacity: .25});
+        $container.css({opacity: opacity});
 
         // use cached results if possible
         var cacheKey = $container.data('pagination') + '__' + requestUrl;
@@ -52,7 +53,15 @@
 
     function update($container, $content, requestUrl) {
         // update content
-        $container.empty().append($content).css({opacity: 1});
+        var type = $container.data('pagination-type')?? 'replace';
+
+        if ('add' === type) {
+            $container.find('nav[class*="pagination"]').remove();
+        } else {
+            $container.empty().append($content).css({opacity: 1});
+        }
+
+        $container.append($content).css({opacity: 1});
 
         // update browser url
         history.pushState({}, null, requestUrl);
