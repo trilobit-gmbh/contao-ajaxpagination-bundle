@@ -14,6 +14,10 @@
         var opacity = $element.closest('[data-pagination]').data('pagination-opacity')?? '.25';
         var requestUrl = $element.attr('href');
 
+        if ('' === requestUrl) {
+            requestUrl = location.protocol + '//' + location.host + location.pathname;
+        }
+
         // trigger event: on hide
         $container.trigger(
             jQuery.Event('hide.pagination.container', {
