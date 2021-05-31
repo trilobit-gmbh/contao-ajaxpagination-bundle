@@ -49,13 +49,15 @@ Eigene / Neue Erweiterungen mit der Ajaxpagination nachrüsten
 
 Installation
 ------------
-Install the extension via composer: [trilobit-gmbh/contao-ajaxpagination-bundle](https://packagist.org/packages/trilobit-gmbh/contao-ajaxpagination-bundle).
+- Installation der Erweiterung via composer: [trilobit-gmbh/contao-ajaxpagination-bundle](https://packagist.org/packages/trilobit-gmbh/contao-ajaxpagination-bundle).
+- Um die Installation abzuschließen bitte noch in den fraglichen `Themes > Seitenlayouts` unter `jQuery laden` die Option `j_ajax-pagination` aktivieren. 
+
 
 
 Konfiguration
 -------------
 
-In den Templates kann jetzt im umgebenden Container ergänzend die Transparenz definiert wreden (die beim Nachladen gesetzt wird) sowie der Arbeitsmodus umgeschaltet werden (von "ersetzen" zu "anhängen")
+In den Templates kann jetzt im umgebenden Container ergänzend die Transparenz definiert werden (die beim Nachladen gesetzt wird) sowie der Arbeitsmodus umgeschaltet werden (von "ersetzen" zu "anhängen")
 
 ```
 <div data-pagination="..." data-pagination-type="add" data-pagination-opacity=".25">
