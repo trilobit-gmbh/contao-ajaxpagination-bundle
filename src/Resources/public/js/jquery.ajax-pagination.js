@@ -1,9 +1,10 @@
 (function (jQuery) {
-
     const $requestCache = [];
     const $currentlyProcessedElements = [];
 
     function requestUpdate($element) {
+        "use strict";
+
         // only allow one update at a time
         if ($currentlyProcessedElements.includes($element)) {
             return;
@@ -57,7 +58,11 @@
     }
 
     function update($container, $content, requestUrl) {
+        "use strict";
+
         let type = $container.data('pagination-type') ?? 'replace';
+        let scroll = $container.data('pagination-scroll') ?? '';
+        let offset = $container.data('pagination-scroll-offset') ?? '0';
 
         if ('add' === type) {
             $container.find('nav[class*="pagination"]').remove();
@@ -77,6 +82,12 @@
         // update content
         $container.append($content).css({opacity: 1});
 
+        // scroll
+        if ('' !== scroll) {
+            let top = $container.offset().top + offset;
+            scrollTo(top, scroll);
+        }
+
         // trigger event: on show
         $container.trigger(
             jQuery.Event('show.pagination.container', {
@@ -85,7 +96,19 @@
         );
     }
 
+    function scrollTo(value, options) {
+        "use strict";
+
+        jQuery('html, body')
+            .animate({
+                scrollTop: parseInt(value, 10)
+            }, options)
+        ;
+    }
+
     function init() {
+        "use strict";
+
         // track .pagination a elements
         jQuery('body').on('click', '[data-pagination] .pagination a, [data-pagination] .cal_pagination a', function (event) {
             event.preventDefault();
