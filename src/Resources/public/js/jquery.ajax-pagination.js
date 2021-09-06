@@ -8,11 +8,12 @@
         if ($currentlyProcessedElements.includes($element)) {
             return;
         }
+
         $currentlyProcessedElements.push($element);
 
-        var $container = $element.closest('[data-pagination]');
-        var opacity = $element.closest('[data-pagination]').data('pagination-opacity')?? '.25';
-        var requestUrl = $element.attr('href');
+        let $container = $element.closest('[data-pagination]');
+        let opacity = $element.closest('[data-pagination]').data('pagination-opacity') ?? '.25';
+        let requestUrl = $element.attr('href');
 
         if ('' === requestUrl) {
             requestUrl = location.protocol + '//' + location.host + location.pathname;
@@ -23,12 +24,12 @@
             jQuery.Event('hide.pagination.container', {
                 relatedTarget: $container
             })
-        );
+        )
 
         $container.css({opacity: opacity});
 
         // use cached results if possible
-        var cacheKey = $container.data('pagination') + '__' + requestUrl;
+        let cacheKey = $container.data('pagination') + '__' + requestUrl;
 
         if ($requestCache[cacheKey]) {
             update($container, $requestCache[cacheKey], requestUrl);
@@ -42,7 +43,7 @@
             url: requestUrl,
             type: 'get',
             success: function (data) {
-                var $content = jQuery(data).find('[data-pagination="' + $container.data('pagination') + '"]').children();
+                const $content = jQuery(data).find('[data-pagination="' + $container.data('pagination') + '"]').children();
                 $requestCache[cacheKey] = $content;
 
                 update($container, $content, requestUrl);
@@ -56,19 +57,25 @@
     }
 
     function update($container, $content, requestUrl) {
-        // update content
-        var type = $container.data('pagination-type')?? 'replace';
+        let type = $container.data('pagination-type') ?? 'replace';
 
         if ('add' === type) {
             $container.find('nav[class*="pagination"]').remove();
+
+            for (let i = 0; i < $content.length; i++) {
+                if (jQuery($content[i]).hasClass('pagination')) {
+                    jQuery($content[i]).find('li').not('.next').remove();
+                }
+            }
         } else {
-            $container.empty().append($content).css({opacity: 1});
+            $container.empty();
+
+            // update browser url
+            history.pushState({}, null, requestUrl);
         }
 
+        // update content
         $container.append($content).css({opacity: 1});
-
-        // update browser url
-        history.pushState({}, null, requestUrl);
 
         // trigger event: on show
         $container.trigger(
@@ -84,11 +91,18 @@
             event.preventDefault();
             requestUpdate(jQuery(this));
         });
+
+        jQuery('[data-pagination]').each(function() {
+            let $container = jQuery(this);
+
+            if ('add' === ($container.data('pagination-type') ?? 'replace')) {
+                $container.find('nav[class*="pagination"] li').not('.next').remove();
+            }
+        });
     }
 
     jQuery(document).ready(function () {
         init();
     });
-
 
 })(jQuery);
