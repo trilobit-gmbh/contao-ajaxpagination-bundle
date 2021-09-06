@@ -57,7 +57,7 @@ Installation
 Konfiguration
 -------------
 
-**Arbeitsmodus**
+### Arbeitsmodus
 
 In den Templates kann im umgebenden Container ergänzend der Arbeitsmodus umgeschaltet werden (von "ersetzen" zu "anhängen").
 
@@ -68,7 +68,7 @@ In den Templates kann im umgebenden Container ergänzend der Arbeitsmodus umgesc
 ```
 Ohne das Attribut `data-pagination-type="add"` arbeitet die Paginierung wie bisher auch.
 
-**Opacity**
+### Opacity
 
 In den Templates kann im umgebenden Container ergänzend die Transparenz definiert werden (die beim Nachladen gesetzt wird).
 
@@ -79,7 +79,7 @@ In den Templates kann im umgebenden Container ergänzend die Transparenz definie
 ```
 Ohne das Attribut `data-pagination-opacity=".25"` arbeitet die Paginierung wie bisher auch.
 
-**Auto Scrolling**
+### Auto Scrolling
 
 Weiter kann jetzt im umgebenden Container ergänzend für die Standard-Paginierungs-Einstellung ein Auto Scrolling an den Anfang des paginierten Containers definiert werden.
 
@@ -94,6 +94,35 @@ Weiter kann jetzt im umgebenden Container ergänzend für die Standard-Paginieru
 ```
 
 Ohne das jeweilige Attribut `data-pagination-scroll="slow"` bzw `data-pagination-scroll-offset="-25"` arbeitet die Paginierung wie bisher auch.
+
+### Events
+
+Beim blättern werden folgende Events getriggert:
+* `hide.pagination.container`
+* `show.pagination.container`
+
+Diese können z. B. für ein individuelles automatisches Scrolling verwendet werden (abweichend vom implementierten Scrolling).
+
+Bspl.:
+```
+jQuery('[data-pagination]')
+    .on('hide.pagination.container', function (event) {
+        let $target = jQuery(event.relatedTarget[0]);
+        
+        $target.addClass('in-progress');
+    })
+    .on('show.pagination.container', function (event) {
+        let $target = jQuery(event.relatedTarget[0]);
+
+        jQuery('html, body')
+            .animate({
+                scrollTop: $target.offset().top - 123
+            }, 'slow');
+        
+        $target.removeClass('in-progress');
+    });
+```
+
 
 
 Compatibility
