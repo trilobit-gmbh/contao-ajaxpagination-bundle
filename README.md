@@ -57,14 +57,75 @@ Installation
 Konfiguration
 -------------
 
-In den Templates kann jetzt im umgebenden Container ergänzend die Transparenz definiert werden (die beim Nachladen gesetzt wird) sowie der Arbeitsmodus umgeschaltet werden (von "ersetzen" zu "anhängen")
+### Arbeitsmodus
+
+In den Templates kann im umgebenden Container ergänzend der Arbeitsmodus umgeschaltet werden (von "ersetzen" zu "anhängen").
 
 ```
-<div data-pagination="..." data-pagination-type="add" data-pagination-opacity=".25">
+<div data-pagination="..." data-pagination-type="add">
     ...
 </div>
 ```
-Ohne das jeweilige Attribut `data-pagination-type="add"` bzw `data-pagination-opacity=".25"` arbeitet die Paginierung wie bisher auch.
+Ohne das Attribut `data-pagination-type="add"` arbeitet die Paginierung wie bisher auch.
+
+### Opacity
+
+In den Templates kann im umgebenden Container ergänzend die Transparenz definiert werden (die beim Nachladen gesetzt wird).
+
+```
+<div data-pagination="..." data-pagination-opacity=".25">
+    ...
+</div>
+```
+Ohne das Attribut `data-pagination-opacity=".25"` arbeitet die Paginierung wie bisher auch.
+
+### Auto Scrolling
+
+Weiter kann jetzt im umgebenden Container ergänzend für die Standard-Paginierungs-Einstellung ein Auto Scrolling an den Anfang des paginierten Containers definiert werden.
+
+Über das Attribut `data-pagination-scroll="slow"` wird das Auto Scrolling aktiviert und die Scrollgeschwindigkeit eingestellt.
+
+Über das Attribut `data-pagination-scroll-offset="-25"` kann ein Offset für das definiert werden.
+
+```
+<div data-pagination="..." data-pagination-scroll="slow" data-pagination-scroll-offset="-25">
+    ...
+</div>
+```
+
+Ohne das jeweilige Attribut `data-pagination-scroll="slow"` bzw `data-pagination-scroll-offset="-25"` arbeitet die Paginierung wie bisher auch.
+
+### Events
+
+Beim blättern werden folgende Events getriggert:
+* `hide.pagination.container`
+* `show.pagination.container`
+
+Diese können z. B. für ein individuelles automatisches Scrolling verwendet werden (abweichend vom implementierten Scrolling).
+
+Bspl.:
+```
+jQuery('[data-pagination]')
+    .on('hide.pagination.container', function (event) {
+        let $target = jQuery(event.relatedTarget[0]);
+
+        $target.addClass('in-progress');
+    })
+    .on('show.pagination.container', function (event) {
+        let $target = jQuery(event.relatedTarget[0]);
+        let offsetStatic = 10;
+        let offsetDynamic = jQuery('#header').outerHeight();
+
+        jQuery('html, body')
+            .animate({
+                scrollTop: $target.offset().top - offsetStatic - offsetDynamic
+            }, 'slow');
+
+        $target.removeClass('in-progress');
+    });
+```
+
+
 
 Compatibility
 -------------
