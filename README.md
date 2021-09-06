@@ -108,17 +108,19 @@ Bspl.:
 jQuery('[data-pagination]')
     .on('hide.pagination.container', function (event) {
         let $target = jQuery(event.relatedTarget[0]);
-        
+
         $target.addClass('in-progress');
     })
     .on('show.pagination.container', function (event) {
         let $target = jQuery(event.relatedTarget[0]);
+        let offsetStatic = 10;
+        let offsetDynamic = jQuery('#header').outerHeight();
 
         jQuery('html, body')
             .animate({
-                scrollTop: $target.offset().top - 123
+                scrollTop: $target.offset().top - offsetStatic - offsetDynamic
             }, 'slow');
-        
+
         $target.removeClass('in-progress');
     });
 ```
