@@ -1,7 +1,7 @@
 Ajaxpagination Bundle
 =====================
 
-Das Ajaxpagination Bundle bietet ihnen die Möglichkeit die Paginierung ihrer Seite via Ajax-Request zu implementieren. Dafür müssen Sie die entsprechenden Templates mit einem Hilfscontainer versehen. Die Erweiterung kommt bereits mit einer Anzahl an Templates, die direkt verwendet werden können. 
+Das Ajaxpagination Bundle bietet ihnen die Möglichkeit die Paginierung ihrer Seite via Ajax-Request zu implementieren. Dafür müssen Sie die entsprechenden Templates mit einem Hilfscontainer versehen. Die Erweiterung kommt bereits mit einer Anzahl an Templates, die direkt verwendet werden können.
 
 ---
 
@@ -38,7 +38,7 @@ Enthaltene Templates
 Eigene / Neue Erweiterungen mit der Ajaxpagination nachrüsten
 -------------------------------------------------------------
 - Die Paginierungs-Links müssen in einem NAV-Container mit der (auch Teil-) Klasse `pagination` liegen.
-- Die zu paginierenden Inhalte sowie die Paginierung selbst müssen in einem Hilfscontainer liegen. 
+- Die zu paginierenden Inhalte sowie die Paginierung selbst müssen in einem Hilfscontainer liegen.
 - ```
   <div data-pagination="...">
       ...
@@ -50,7 +50,7 @@ Eigene / Neue Erweiterungen mit der Ajaxpagination nachrüsten
 Installation
 ------------
 - Installation der Erweiterung via composer: [trilobit-gmbh/contao-ajaxpagination-bundle](https://packagist.org/packages/trilobit-gmbh/contao-ajaxpagination-bundle).
-- Um die Installation abzuschließen bitte noch in den fraglichen `Themes > Seitenlayouts` unter `jQuery laden` die Option `j_ajax-pagination` aktivieren. 
+- Um die Installation abzuschließen bitte noch in den fraglichen `Themes > Seitenlayouts` unter `jQuery laden` die Option `j_ajax-pagination` aktivieren.
 
 
 
@@ -130,5 +130,6 @@ jQuery('[data-pagination]')
 Compatibility
 -------------
 
-- Contao version ~4.4
 - Contao version ~4.9
+- Contao version ~4.13
+- Contao version ~5.0
