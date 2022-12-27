@@ -10,9 +10,11 @@ declare(strict_types=1);
 
 namespace Trilobit\AjaxPaginationBundle\ContaoManager;
 
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Trilobit\AjaxPaginationBundle\TrilobitAjaxPaginationBundle;
 
 class Plugin implements BundlePluginInterface
 {
@@ -22,8 +24,8 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create('Trilobit\AjaxPaginationBundle\TrilobitAjaxPaginationBundle')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle']),
+            BundleConfig::create(TrilobitAjaxPaginationBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
 }
