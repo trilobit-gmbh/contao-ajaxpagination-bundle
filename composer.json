@@ -1,7 +1,7 @@
 {
     "name": "trilobit-gmbh/contao-ajaxpagination-bundle",
     "type": "contao-bundle",
-    "description": "Contao 4 ajax pagination bundle",
+    "description": "Contao 4 / Contao 5 ajax pagination bundle",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
