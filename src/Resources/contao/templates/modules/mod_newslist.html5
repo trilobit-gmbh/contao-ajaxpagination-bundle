@@ -2,13 +2,20 @@
 
 <?php $this->block('content'); ?>
 
-  <?php if (empty($this->articles)): ?>
+<?php if (empty($this->articles)): ?>
     <p class="empty"><?= $this->empty ?></p>
-  <?php else: ?>
+<?php else: ?>
     <div data-pagination="page_n<?= $this->id ?>">
-      <?= implode('', $this->articles) ?>
-      <?= $this->pagination ?>
+        <?php foreach ($this->articles as $key => $value): ?>
+            <?php if (is_array($value)): ?>
+                <?= implode('', $value) ?>
+            <?php else: ?>
+                <?= $value ?>
+            <?php endif ?>
+        <?php endforeach ?>
+
+        <?= $this->pagination ?>
     </div>
-  <?php endif; ?>
+<?php endif; ?>
 
 <?php $this->endblock(); ?>
