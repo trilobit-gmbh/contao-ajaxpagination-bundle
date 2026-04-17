@@ -2,9 +2,9 @@
 
 <?php $this->block('content'); ?>
 
-  <div data-pagination="page_g<?= $this->id ?>">
+<div data-pagination="page_g<?= $this->id ?>">
     <?= $this->images ?>
     <?= $this->pagination ?>
-  </div>
+</div>
 
 <?php $this->endblock(); ?>
