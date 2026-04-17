@@ -1,7 +1,7 @@
 {
     "name": "trilobit-gmbh/contao-ajaxpagination-bundle",
-    "description": "Contao 4 ajax pagination bundle",
     "type": "contao-bundle",
+    "description": "Contao 4 ajax pagination bundle",
     "license": "LGPL-3.0-or-later",
     "authors": [
         {
@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0",
-        "contao/core-bundle": "^4.9"
+      "php": "^8.0",
+      "contao/core-bundle": "^4.13 || ^5.3"
     },
     "require-dev": {
         "contao/easy-coding-standard": "^3.0",
@@ -29,8 +29,9 @@
     "config": {
         "allow-plugins": {
             "contao-components/installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "contao/manager-plugin": true
+            "contao/manager-plugin": true,
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

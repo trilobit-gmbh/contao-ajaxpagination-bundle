@@ -1,7 +1,7 @@
 Ajaxpagination Bundle
 =====================
 
-Das Ajaxpagination Bundle bietet ihnen die Möglichkeit die Paginierung ihrer Seite via Ajax-Request zu implementieren. Dafür müssen Sie die entsprechenden Templates mit einem Hilfscontainer versehen. Die Erweiterung kommt bereits mit einer Anzahl an Templates, die direkt verwendet werden können.
+Das Ajaxpagination Bundle bietet ihnen die Möglichkeit, die Paginierung ihrer Seite via Ajax-Request zu implementieren. Dafür müssen Sie die entsprechenden Templates mit einem Hilfscontainer versehen. Die Erweiterung kommt bereits mit einer Anzahl an Templates, die direkt verwendet werden können.
 
 ---
 
@@ -26,7 +26,7 @@ Template mit Hilfscontainer / Template with auxiliary container
 
 Enthaltene Templates
 --------------------
-(überschreiben die entsprechenden Core-Templates)
+(überschreiben der entsprechenden Core-Templates)
 - cal_default
 - cal_mini
 - ce_comments
@@ -50,7 +50,7 @@ Eigene / Neue Erweiterungen mit der Ajaxpagination nachrüsten
 Installation
 ------------
 - Installation der Erweiterung via composer: [trilobit-gmbh/contao-ajaxpagination-bundle](https://packagist.org/packages/trilobit-gmbh/contao-ajaxpagination-bundle).
-- Um die Installation abzuschließen bitte noch in den fraglichen `Themes > Seitenlayouts` unter `jQuery laden` die Option `j_ajax-pagination` aktivieren.
+- Um die Installation abzuschließen, bitte noch in den fraglichen `Themes > Seitenlayouts` unter `JavaScript > JavaScript-Templates laden` die Option `js_ajax-pagination` aktivieren.
 
 
 
@@ -97,11 +97,11 @@ Ohne das jeweilige Attribut `data-pagination-scroll="slow"` bzw `data-pagination
 
 ### Events
 
-Beim blättern werden folgende Events getriggert:
+Beim Blättern werden folgende Events getriggert:
 * `hide.pagination.container`
 * `show.pagination.container`
 
-Diese können z. B. für ein individuelles automatisches Scrolling verwendet werden (abweichend vom implementierten Scrolling).
+Diese können z. B. für ein individuelles automatisches Scrolling verwendet werden (abweichend vom implementierten Scrolling).
 
 Bspl.:
 ```
@@ -130,5 +130,6 @@ jQuery('[data-pagination]')
 Compatibility
 -------------
 
-- Contao version ~4.9
 - Contao version ~4.13
+- Contao version ~5.3
+- Contao version ~5.7
